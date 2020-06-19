@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import logo from '../images/logo.svg';
-import { IoMdMenu } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import logo from "../images/logo.svg";
+import { IoMdMenu } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 export default class Navbar extends Component {
   state = {
@@ -19,7 +19,7 @@ export default class Navbar extends Component {
               <img src={logo} alt="logo" />
             </Link>
             <button
-              onClikc={this.handleToggle}
+              onClick={this.handleToggle}
               type="button"
               className="nav-btn"
             >
@@ -27,7 +27,7 @@ export default class Navbar extends Component {
             </button>
           </div>
           <ul
-            className={this.state.isOpen ? 'nav-links show-nav' : 'nav-links'}
+            className={this.state.isOpen ? "nav-links show-nav" : "nav-links"}
           >
             <li>
               <Link to="/">Home</Link>
