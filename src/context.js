@@ -54,9 +54,25 @@ export default class RoomProvider extends Component {
     return room;
   };
 
+  handleChange = (event) => {
+    const type = event.target.type;
+    const name = event.target.name;
+    const value = event.target.value;
+  };
+
+  filterRooms = () => {
+    console.log("hello");
+  };
+
   render() {
     return (
-      <RoomContext.Provider value={{ ...this.state, getRoom: this.getRoom }}>
+      <RoomContext.Provider
+        value={{
+          ...this.state,
+          getRoom: this.getRoom,
+          handleChange: this.handleChange,
+        }}
+      >
         {this.props.children}
       </RoomContext.Provider>
     );
