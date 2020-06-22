@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import logo from "../images/logo.svg";
 import { IoMdMenu } from "react-icons/io";
 import { Link } from "react-router-dom";
+import NavUser from "./NavUser";
 
 export default class Navbar extends Component {
   state = {
     isOpen: false,
   };
+
   handleToggle = () => {
     this.setState({ isOpen: !this.state.isOpen });
   };
+
   render() {
     return (
       <nav className="navbar">
@@ -34,6 +37,9 @@ export default class Navbar extends Component {
             </li>
             <li>
               <Link to="/rooms">Rooms</Link>
+            </li>
+            <li className="reserved-count-relative">
+              <NavUser />
             </li>
           </ul>
         </div>

@@ -2,10 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
-import { FaFileContract } from "react-icons/fa";
+import { AiOutlineTag } from "react-icons/ai";
+import { RoomContext } from "../context";
+import { useContext } from "react";
 
 export default function Room({ room }) {
   const { name, slug, images, price } = room;
+  const context = useContext(RoomContext);
+  let { reservedRooms, rent } = context;
 
   return (
     <article className="room">
@@ -18,11 +22,11 @@ export default function Room({ room }) {
         <Link to={`/rooms/${slug}`} className="btn-primary room-link">
           Features
         </Link>
-        <button className=" rent-btn">
+        <button onClick={rent} className="rent-btn">
           <div className="room-icon rent-btn-item">
-            <FaFileContract />
+            <AiOutlineTag />
           </div>
-          <div className="room-txt rent-btn-item">Rent</div>
+          <div className="room-txt rent-btn-item">Reserve</div>
         </button>
       </div>
 

@@ -18,6 +18,7 @@ export default class RoomProvider extends Component {
     maxSize: 0,
     breakfast: false,
     pets: false,
+    reservedRooms: 0,
   };
 
   componentDidMount() {
@@ -52,6 +53,15 @@ export default class RoomProvider extends Component {
       return room.slug === slug;
     });
     return room;
+  };
+
+  rent = () => {
+    this.setState((props) => {
+      return {
+        reservedRooms: props.reservedRooms + 1,
+      };
+    });
+    console.log(this.state.reservedRooms);
   };
 
   handleChange = (event) => {
@@ -119,6 +129,7 @@ export default class RoomProvider extends Component {
           ...this.state,
           getRoom: this.getRoom,
           handleChange: this.handleChange,
+          rent: this.rent,
         }}
       >
         {this.props.children}
