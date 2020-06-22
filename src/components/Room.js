@@ -7,7 +7,7 @@ import { RoomContext } from "../context";
 import { useContext } from "react";
 
 export default function Room({ room }) {
-  const { name, slug, images, price } = room;
+  const { name, slug, images, price, reserved } = room;
   const context = useContext(RoomContext);
   let { reservedRooms, rent } = context;
 
@@ -22,11 +22,13 @@ export default function Room({ room }) {
         <Link to={`/rooms/${slug}`} className="btn-primary room-link">
           Features
         </Link>
-        <button onClick={rent} className="rent-btn">
+        <button reserved={reserved} onClick={rent} className="rent-btn">
           <div className="room-icon rent-btn-item">
             <AiOutlineTag />
           </div>
-          <div className="room-txt rent-btn-item">Reserve</div>
+          <div className="room-txt rent-btn-item">
+            {reserved ? "Reserved" : "Reserve"}
+          </div>
         </button>
       </div>
 

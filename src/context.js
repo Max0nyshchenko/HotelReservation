@@ -55,13 +55,15 @@ export default class RoomProvider extends Component {
     return room;
   };
 
-  rent = () => {
+  rent = (e) => {
+    if (e.target.reserved === "true") {
+      e.target.reserved = "false";
+    }
     this.setState((props) => {
       return {
         reservedRooms: props.reservedRooms + 1,
       };
     });
-    console.log(this.state.reservedRooms);
   };
 
   handleChange = (event) => {
