@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import defaultImg from "../images/room-1.jpeg";
 import PropTypes from "prop-types";
+import { FaFileContract } from "react-icons/fa";
 
 export default function Room({ room }) {
   const { name, slug, images, price } = room;
@@ -17,6 +18,12 @@ export default function Room({ room }) {
         <Link to={`/rooms/${slug}`} className="btn-primary room-link">
           Features
         </Link>
+        <button className=" rent-btn">
+          <div className="room-icon rent-btn-item">
+            <FaFileContract />
+          </div>
+          <div className="room-txt rent-btn-item">Rent</div>
+        </button>
       </div>
 
       <p className="room-info">{name}</p>
