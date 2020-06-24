@@ -7,7 +7,12 @@ import { useContext } from "react";
 export default function RentBtn({ room }) {
   const { name } = room;
   const context = useContext(RoomContext);
-  const { rent, reservedRooms, reservedRoomsCount } = context;
+  let {
+    rent,
+    removeFromReservedRooms,
+    reservedRooms,
+    reservedRoomsCount,
+  } = context;
 
   const caom = () => {
     setInterval(() => {
@@ -22,6 +27,8 @@ export default function RentBtn({ room }) {
           if (reservedRooms.indexOf(name) === -1) {
             reservedRooms.push(room.name);
             rent();
+          } else {
+            removeFromReservedRooms(name);
           }
         }}
         id={name}

@@ -74,12 +74,21 @@ export default class RoomProvider extends Component {
   // };
 
   rent = () => {
-    console.log(this.state.reservedRooms);
-    console.log(this.state.reservedRooms.length);
     this.setState((prev) => {
       return { reservedRoomsCount: prev.reservedRoomsCount + 1 };
     });
-    console.log(this.state.reservedRoomsCount);
+  };
+
+  removeFromReservedRooms = (data) => {
+    let rooms = this.state.reservedRooms;
+    rooms = rooms.filter((room) => room !== data);
+
+    this.setState((prev) => {
+      return {
+        reservedRooms: rooms,
+        reservedRoomsCount: prev.reservedRoomsCount - 1,
+      };
+    });
   };
 
   handleChange = (event) => {
@@ -148,6 +157,7 @@ export default class RoomProvider extends Component {
           getRoom: this.getRoom,
           handleChange: this.handleChange,
           rent: this.rent,
+          removeFromReservedRooms: this.removeFromReservedRooms,
         }}
       >
         {this.props.children}

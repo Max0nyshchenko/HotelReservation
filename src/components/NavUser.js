@@ -8,9 +8,13 @@ export default function NavUser() {
   let { reservedRooms, reservedRoomsCount } = context;
   let count = reservedRooms.length;
 
+  function reconstructAlert() {
+    alert("Account experience closed for reconstruction, sorry...");
+  }
+
   return (
     <>
-      <AiOutlineUser className="user-icon" />
+      <AiOutlineUser onClick={reconstructAlert} className="user-icon" />
       {/* show count of reserved rooms */}
       <span
         className={

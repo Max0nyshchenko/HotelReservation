@@ -12,12 +12,6 @@ export default function Room({ room }) {
   const context = useContext(RoomContext);
   let { reservedRooms, rent } = context;
 
-  // const rent = () => {
-  //   reservedRooms.push(name);
-  //   console.log(reservedRooms);
-  //   checkRoomInReservedRooms();
-  // };
-
   return (
     <article className="room">
       <div className="img-container">
