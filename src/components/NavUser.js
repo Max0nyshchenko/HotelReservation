@@ -5,7 +5,8 @@ import { RoomContext } from "../context";
 
 export default function NavUser() {
   const context = useContext(RoomContext);
-  let { reservedRooms } = context;
+  let { reservedRooms, reservedRoomsCount } = context;
+  let count = reservedRooms.length;
 
   return (
     <>
@@ -19,7 +20,7 @@ export default function NavUser() {
         }
       >
         <p className="tooltip">
-          {reservedRooms.length}
+          {reservedRoomsCount}
           <span className="tooltiptext">Rooms reserved</span>
         </p>
       </span>

@@ -19,6 +19,7 @@ export default class RoomProvider extends Component {
     breakfast: false,
     pets: false,
     reservedRooms: [],
+    reservedRoomsCount: 0,
   };
 
   componentDidMount() {
@@ -74,6 +75,11 @@ export default class RoomProvider extends Component {
 
   rent = () => {
     console.log(this.state.reservedRooms);
+    console.log(this.state.reservedRooms.length);
+    this.setState((prev) => {
+      return { reservedRoomsCount: prev.reservedRoomsCount + 1 };
+    });
+    console.log(this.state.reservedRoomsCount);
   };
 
   handleChange = (event) => {

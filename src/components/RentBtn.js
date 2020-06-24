@@ -7,7 +7,13 @@ import { useContext } from "react";
 export default function RentBtn({ room }) {
   const { name } = room;
   const context = useContext(RoomContext);
-  const { rent, reservedRooms } = context;
+  const { rent, reservedRooms, reservedRoomsCount } = context;
+
+  const caom = () => {
+    setInterval(() => {
+      return reservedRooms.indexOf(name) === -1 ? "Reserve" : "Cancel";
+    }, 200);
+  };
 
   return (
     <>
@@ -15,8 +21,8 @@ export default function RentBtn({ room }) {
         onClick={() => {
           if (reservedRooms.indexOf(name) === -1) {
             reservedRooms.push(room.name);
+            rent();
           }
-          rent();
         }}
         id={name}
         className="rent-btn"
@@ -25,11 +31,7 @@ export default function RentBtn({ room }) {
           <AiOutlineTag />
         </div>
         <div className="room-txt rent-btn-item">
-          {(reservedRooms) => {
-            if (reservedRooms.indexOf(name) === -1) {
-              return "Reserve";
-            }
-          }}
+          {reservedRooms.indexOf(name) === -1 ? "Reserve" : "Cancel"}
         </div>
       </button>
     </>
