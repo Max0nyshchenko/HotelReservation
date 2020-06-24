@@ -18,7 +18,7 @@ export default class RoomProvider extends Component {
     maxSize: 0,
     breakfast: false,
     pets: false,
-    reservedRooms: 0,
+    reservedRooms: [],
   };
 
   componentDidMount() {
@@ -55,15 +55,25 @@ export default class RoomProvider extends Component {
     return room;
   };
 
-  rent = (e) => {
-    if (e.target.reserved === "true") {
-      e.target.reserved = "false";
-    }
-    this.setState((props) => {
-      return {
-        reservedRooms: props.reservedRooms + 1,
-      };
-    });
+  // rent = (event) => {
+  //   let id;
+  //   console.log(event.target.parentElement.parentElement);
+  //   if (event.target.className === "rent-btn") {
+  //     id = event.target.id;
+  //   } else if (
+  //     event.target.className === "room-txt" ||
+  //     event.target.className === "room-icon"
+  //   ) {
+  //     id = event.target.parentElement.id;
+  //   }
+  //   this.setState((prev) => {
+  //     return { reservedRooms: [...prev.reservedRooms, id] };
+  //   });
+  //   console.log(this.state.reservedRooms);
+  // };
+
+  rent = () => {
+    console.log(this.state.reservedRooms);
   };
 
   handleChange = (event) => {

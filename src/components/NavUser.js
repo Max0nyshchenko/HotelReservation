@@ -13,13 +13,13 @@ export default function NavUser() {
       {/* show count of reserved rooms */}
       <span
         className={
-          reservedRooms > 0
+          reservedRooms.length > 0
             ? "reserved-count-show  reserved-count"
             : "reserved-count "
         }
       >
         <p className="tooltip">
-          {reservedRooms}
+          {reservedRooms.length}
           <span className="tooltiptext">Rooms reserved</span>
         </p>
       </span>

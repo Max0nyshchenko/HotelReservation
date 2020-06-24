@@ -5,11 +5,18 @@ import PropTypes from "prop-types";
 import { AiOutlineTag } from "react-icons/ai";
 import { RoomContext } from "../context";
 import { useContext } from "react";
+import RentBtn from "./RentBtn";
 
 export default function Room({ room }) {
-  const { name, slug, images, price, reserved } = room;
+  const { name, slug, images, price } = room;
   const context = useContext(RoomContext);
   let { reservedRooms, rent } = context;
+
+  // const rent = () => {
+  //   reservedRooms.push(name);
+  //   console.log(reservedRooms);
+  //   checkRoomInReservedRooms();
+  // };
 
   return (
     <article className="room">
@@ -22,14 +29,7 @@ export default function Room({ room }) {
         <Link to={`/rooms/${slug}`} className="btn-primary room-link">
           Features
         </Link>
-        <button reserved={reserved} onClick={rent} className="rent-btn">
-          <div className="room-icon rent-btn-item">
-            <AiOutlineTag />
-          </div>
-          <div className="room-txt rent-btn-item">
-            {reserved ? "Reserved" : "Reserve"}
-          </div>
-        </button>
+        <RentBtn room={room} />
       </div>
 
       <p className="room-info">{name}</p>
