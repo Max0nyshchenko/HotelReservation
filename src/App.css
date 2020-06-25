@@ -113,7 +113,7 @@ h6 {
 }
 .nav-links {
   height: 0;
-  /* overflow: hidden; */
+  overflow: hidden;
   transition: var(--mainTransition);
   list-style-type: none;
 }
@@ -133,7 +133,7 @@ h6 {
 }
 
 .show-nav {
-  height: 100px;
+  height: 160px;
 }
 
 .user-icon {
@@ -755,6 +755,13 @@ h6 {
   .modal-close {
     right: 50%;
     transform: translate(75%, 0);
+  }
+}
+@media screen and (max-width: 767px) {
+  .reserved-count-relative {
+    display: grid;
+    justify-content: center;
+    padding: 1rem;
   }
 }
 /* end of modal */
