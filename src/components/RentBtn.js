@@ -14,12 +14,6 @@ export default function RentBtn({ room }) {
     reservedRoomsCount,
   } = context;
 
-  const caom = () => {
-    setInterval(() => {
-      return reservedRooms.indexOf(name) === -1 ? "Reserve" : "Cancel";
-    }, 200);
-  };
-
   return (
     <>
       <button

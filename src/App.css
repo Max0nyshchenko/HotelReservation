@@ -488,6 +488,13 @@ h6 {
   grid-row-gap: 2rem;
   grid-column-gap: 50px;
 }
+.single-room-img {
+  cursor: pointer;
+  transition: var(--mainTransition);
+}
+.single-room-img:hover {
+  opacity: 0.7;
+}
 .single-room-images img {
   width: 100%;
   display: block;
@@ -615,6 +622,7 @@ h6 {
   font-size: 0.8rem;
   margin-left: 0.5rem;
 }
+
 @media screen and (min-width: 776px) {
   .filter-form {
     width: 70vw;
@@ -627,3 +635,126 @@ h6 {
   }
 }
 /* end of rooms fitler*/
+/* modal */
+.myModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content,
+#caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* goRight and Left on Modal */
+.goRight,
+.goLeft {
+  position: absolute;
+  top: 50%;
+  margin: 1rem;
+  font-size: 2rem;
+  color: aliceblue;
+  cursor: pointer;
+  transition: var(--mainTransition);
+  transform: translate(0, -75%);
+}
+
+.goLeft {
+  left: 0;
+}
+
+.goRight {
+  right: 0;
+}
+
+.goRight:hover,
+.goLeft:hover {
+  color: blueviolet;
+}
+/* End */
+
+/* The Close Button */
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+  .modal-content {
+    width: 100%;
+  }
+  .goRight,
+  .goLeft {
+    top: 11%;
+  }
+
+  .modal-close {
+    right: 50%;
+    transform: translate(75%, 0);
+  }
+}
+/* end of modal */

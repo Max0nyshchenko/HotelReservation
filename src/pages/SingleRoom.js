@@ -5,6 +5,8 @@ import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
 import StyledHero from "../components/StyledHero";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 
 export default class SingleRoom extends Component {
   constructor(props) {
@@ -46,6 +48,18 @@ export default class SingleRoom extends Component {
     } = room;
     const [mainImg, ...defaultImg] = images;
 
+    const returnImgSrc = (item) => {
+      let img = document.querySelector(".modal-content");
+      img.src = item;
+      let caption = document.querySelector("#caption");
+      caption.innerHTML = name;
+    };
+
+    const moveRight = () => {
+      console.log(images);
+      let initSrc = document.querySelector(".modal-content").src;
+    };
+
     return (
       <>
         <StyledHero img={mainImg || this.state.defaultBcg}>
@@ -58,7 +72,19 @@ export default class SingleRoom extends Component {
         <section className="single-room">
           <div className="single-room-images">
             {defaultImg.map((item, index) => {
-              return <img key={index} src={item} alt={name} />;
+              return (
+                <img
+                  className="single-room-img"
+                  onClick={() => {
+                    returnImgSrc(item);
+                    let modal = document.querySelector(".myModal");
+                    modal.style.display = "block";
+                  }}
+                  key={index}
+                  src={item}
+                  alt={name}
+                />
+              );
             })}
           </div>
           <div className="single-room-info">
@@ -86,6 +112,27 @@ export default class SingleRoom extends Component {
               return <li key={index}>- {item} </li>;
             })}
           </ul>
+        </section>
+        <section className="myModal">
+          <span
+            onClick={() => {
+              let modal = document.querySelector(".myModal");
+              modal.style.display = "none";
+            }}
+            class="modal-close"
+          >
+            &times;
+          </span>
+          <img class="modal-content" />
+          <div id="caption"></div>
+          <span onClick={moveRight} className="goRight">
+            {" "}
+            <FaArrowAltCircleRight />{" "}
+          </span>
+          <span onClick={""} className="goLeft">
+            {" "}
+            <FaArrowAltCircleLeft />{" "}
+          </span>
         </section>
       </>
     );
