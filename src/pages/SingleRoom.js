@@ -14,6 +14,7 @@ export default class SingleRoom extends Component {
     this.state = {
       slug: this.props.match.params.slug,
       defaultBcg,
+      modalArr: [],
     };
   }
 
@@ -55,9 +56,33 @@ export default class SingleRoom extends Component {
       caption.innerHTML = name;
     };
 
+    let clicks = 1;
+
     const moveRight = () => {
-      console.log(images);
-      let initSrc = document.querySelector(".modal-content").src;
+      let idx = defaultImg.indexOf(this.state.modalArr[0]);
+      let img = document.querySelector(".modal-content");
+      let def = defaultImg[idx + 1];
+      img.src = def;
+      if (defaultImg[idx + 1] === undefined) {
+        def = defaultImg[0];
+        img.src = def;
+      }
+      this.setState({
+        modalArr: [def],
+      });
+    };
+    const moveLeft = () => {
+      let idx = defaultImg.indexOf(this.state.modalArr[0]);
+      let img = document.querySelector(".modal-content");
+      let def = defaultImg[idx - 1];
+      img.src = def;
+      if (defaultImg[idx - 1] === undefined) {
+        def = defaultImg[defaultImg.length - 1];
+        img.src = def;
+      }
+      this.setState({
+        modalArr: [def],
+      });
     };
 
     return (
@@ -79,6 +104,7 @@ export default class SingleRoom extends Component {
                     returnImgSrc(item);
                     let modal = document.querySelector(".myModal");
                     modal.style.display = "block";
+                    this.state.modalArr.push(item);
                   }}
                   key={index}
                   src={item}
@@ -118,6 +144,10 @@ export default class SingleRoom extends Component {
             onClick={() => {
               let modal = document.querySelector(".myModal");
               modal.style.display = "none";
+              this.setState({
+                modalArr: [],
+              });
+              clicks = 1;
             }}
             class="modal-close"
           >
@@ -129,7 +159,7 @@ export default class SingleRoom extends Component {
             {" "}
             <FaArrowAltCircleRight />{" "}
           </span>
-          <span onClick={""} className="goLeft">
+          <span onClick={moveLeft} className="goLeft">
             {" "}
             <FaArrowAltCircleLeft />{" "}
           </span>
