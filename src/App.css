@@ -413,6 +413,8 @@ h6 {
 .room {
   box-shadow: var(--lightShadow);
   transition: var(--mainTransition);
+  display: grid;
+  grid-template-rows: 80% 20%;
 }
 .room:hover {
   box-shadow: var(--darkShadow);
@@ -420,11 +422,14 @@ h6 {
 
 .img-container {
   position: relative;
+  height: 100%;
 }
 .img-container img {
   width: 100%;
   display: block;
   transition: var(--mainTransition);
+  height: 100%;
+  object-fit: cover;
 }
 .price-top {
   position: absolute;
@@ -473,6 +478,8 @@ h6 {
   text-align: center;
   font-weight: 700;
   letter-spacing: var(--mainSpacing);
+  display: grid;
+  align-items: center;
 }
 /* end of room  */
 /* single room*/
